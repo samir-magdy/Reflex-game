@@ -11,6 +11,9 @@ body{
     min-height: 100vh;
     background-color: rgb(216, 215, 215);
 }
+#leveltitle{
+    font-size: 1.75em;
+}
 main{
     display: flex;
     flex-direction: column;
@@ -34,6 +37,7 @@ main{
     cursor: pointer;
     transform: scale(1.01);
 }
+
 
 #target{
     font-variant: small-caps;
