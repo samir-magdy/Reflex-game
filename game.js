@@ -1,7 +1,7 @@
 
     // start / stop button
     const toggleGame = document.getElementById('toggle');
-    const p = document.getElementById('p');
+    const p = document.getElementById('para');
     // color array
     const colors = ['red', 'blue', 'yellow', 'green', 'orange', 'purple'];
     //counter for changing colors

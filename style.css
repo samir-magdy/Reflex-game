@@ -32,6 +32,7 @@ main{
     transition: transform 1s ease;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin-top: 0.1em;
+    padding: 1em;
 }
 #toggle:hover{
     cursor: pointer;
