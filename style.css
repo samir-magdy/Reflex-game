@@ -9,7 +9,7 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: rgb(216, 215, 215);
+    background-color: rgba(0, 0, 0, 0.108);
 }
 #leveltitle{
     font-size: 1.75em;
@@ -45,8 +45,12 @@ main{
 
 #target{
     font-variant: small-caps;
-    font-size: 2rem;
+    font-size: 1.5em;
     font-weight: bold;
+    background-color: white;
+    padding: 0.01rem 0.5rem;
+    padding-bottom: 0.3rem;
+    border-radius: 0.5rem;
 }
 @media (max-width: 678px){
     body{
@@ -64,4 +68,5 @@ main{
 }
 #para{
     padding: 0 1em;
+    line-height: 30px;
 }
