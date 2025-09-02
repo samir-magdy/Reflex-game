@@ -1,6 +1,6 @@
 
     // start / stop button
-    const toggleGame = document.getElementById('TOGGLE');
+    const toggleGame = document.getElementById('toggle');
     const p = document.getElementById('p');
     // color array
     const colors = ['red', 'blue', 'yellow', 'green', 'orange', 'purple'];
@@ -48,7 +48,7 @@
     var levels = [750, 500, 350, 250, 150];
     var level = 1;
     var lives = 3;
-    hearts_container.style.visibility = "hidden";
+    hearts_container.style.display = "none";
     //main program    
     toggleGame.addEventListener('mousedown', function(){
         //if game not running
@@ -61,10 +61,10 @@
         toggleGame.innerText = "STOP";
         title.innerText = `HOW FAST ARE YOUR REFLEXES?`;
         level_title.innerText = `LEVEL ${level}`;
-        hearts_container.style.visibility = "visible";
-        p.style.visibility = "visible";
+        hearts_container.style.display = "block";
+        p.style.display = "block";
        for(let i = 0 ; i < lives; i++){
-            hearts[i].style.visibility = "visible";
+            hearts[i].style.display = "inline";
        }
         
         
@@ -88,11 +88,11 @@
             if(level > 5){
                 title.innerText = "YOU BEAT ALL THE LEVELS!"
                 level_title.innerText = "🎉";
-                p.style.visibility = "hidden";
+                p.style.display = "none";
                 toggleGame.innerText = "CLICK HERE TO PLAY AGAIN!"
                 setTimeout(function(){gamewin.play()}, 1000);
                 for(let i = 0 ; i < lives; i++){
-                    hearts[i].style.visibility = "hidden";
+                    hearts[i].style.display = "none";
                 }
                 level = 1;
                 lives = 3;
@@ -103,17 +103,17 @@
                         lives--;
                         
                         console.log(lives)
-                        hearts[lives].style.visibility = "hidden";
+                        hearts[lives].style.display = "none";
 
                         if(lives == 0){
-                            p.style.visibility = "hidden";
+                            p.style.display = "none";
                             title.innerText = "GAME OVER";
                             level_title.innerText = "Click the button to try again!";
                             setTimeout(function(){gameover.play()}, 1000);
                         
                             level = 1;
                             lives = 3;
-                            hearts_container.style.visibility = "hidden";
+                            hearts_container.style.display = "none";
                         }
                     }}
                 })
