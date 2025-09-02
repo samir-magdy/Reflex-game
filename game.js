@@ -28,7 +28,7 @@
     var main = null;
     //select span changeable text
     var target = document.getElementById('target');
-    //generate a random number within the colors array lenglth limit
+    //generate a random number within the colors array length limit
     var newColor = randomColor(0, colors.length - 1);
     //set starter elements to main color
     target.style.color = colors[newColor];
@@ -38,7 +38,7 @@
     const winSound = new Audio('sound/win.mp3');
     const loseSound = new Audio('sound/lose.mp3');
     const gameover = new Audio('sound/gameover.mp3');
-    const gamewin = new Audio('sound/gamewin.flac')
+    const gamewin = new Audio('sound/gamewin.flac');
     
     const title = document.getElementById('title');
     const level_title = document.getElementById('leveltitle')
@@ -83,7 +83,7 @@
             newColor = randomColor(0, colors.length - 1);
             // set elements to new color
             target.style.color = colors[newColor];
-            target.innerText = colors[newColor]
+            target.innerText = colors[newColor];
             
             if(level > 5){
                 title.innerText = "YOU BEAT ALL THE LEVELS!"
@@ -102,7 +102,6 @@
                         title.innerText = "TOO SLOW!"
                         lives--;
                         
-                        console.log(lives)
                         hearts[lives].style.display = "none";
 
                         if(lives == 0){
