@@ -141,32 +141,6 @@ main {
   justify-content: center;
 }
 
-#title {
-  font-size: clamp(2.5rem, 5vw, 4.4rem);
-  font-weight: 900;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #96ceb4);
-  background-size: 400% 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientShift 3s ease-in-out infinite;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-  letter-spacing: 2px;
-  width: 100%;
-  margin-top: 1rem;
-}
-
-@keyframes gradientShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
 #leveltitle {
   font-size: 2rem;
   font-weight: 700;
@@ -186,7 +160,7 @@ main {
 }
 
 #leveltitle:empty {
-  visibility: hidden;
+  display: none;
 }
 
 #lives {
@@ -232,8 +206,9 @@ main {
 
 #target {
   display: block;
-  font-weight: 700;
+  font-weight: 900;
   text-transform: uppercase;
+  font-size: 3.25rem;
   padding: 0.2rem 0.5rem;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.15);
@@ -294,9 +269,6 @@ main {
     padding: 0 1rem;
   }
 
-  #title {
-    font-size: 4rem;
-  }
   #leveltitle {
     font-size: 1.75rem;
   }
@@ -311,10 +283,6 @@ main {
 }
 
 @media (max-width: 480px) {
-  #title {
-    font-size: 2.1rem;
-  }
-
   #leveltitle {
     font-size: 1.4rem;
     padding: 0.4rem 0.8rem;
@@ -338,11 +306,6 @@ main {
 @media (max-width: 400px) {
   main {
     padding: 0 0.75rem;
-  }
-
-  #title {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
   }
 
   #leveltitle {

@@ -1,7 +1,6 @@
 // SELECT GAME ELEMENTS
 const game_button = document.getElementById("toggle");
 const instruction_text = document.getElementById("para");
-const game_title = document.getElementById("title");
 const level_display = document.getElementById("leveltitle");
 const lives_container = document.getElementById("lives");
 const heart_icons = lives_container.querySelectorAll("span");
@@ -80,7 +79,6 @@ game_button.addEventListener("mousedown", function () {
 function start_game() {
   color_change_interval = setInterval(cycle_color, level_speeds[current_level - 1]);
   is_game_running = true;
-  game_title.classList.add("toggle_display");
   level_display.classList.remove("toggle_display");
   lives_container.classList.remove("toggle_display");
   instruction_text.classList.remove("toggle_display");
@@ -115,8 +113,6 @@ function handle_color_mismatch() {
 }
 
 function handle_game_win() {
-  game_title.innerHTML = "YOU BEAT ALL LEVELS!";
-  game_title.classList.remove("toggle_display");
   level_display.classList.add("toggle_display");
   lives_container.classList.add("toggle_display");
   instruction_text.classList.add("toggle_display");
@@ -131,8 +127,6 @@ function handle_game_win() {
 
 function handle_game_over() {
   instruction_text.classList.add("toggle_display");
-  game_title.innerHTML = "<br>GAME OVER";
-  game_title.classList.remove("toggle_display");
   game_button.textContent = "RESTART";
   level_display.classList.add("toggle_display");
   background_music.pause();
