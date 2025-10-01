@@ -66,7 +66,9 @@ game_button.addEventListener("mousedown", function () {
     start_game();
   } else {
     stop_game();
-    if (game_button.style.backgroundColor === available_colors[target_color_index]) {
+    if (
+      game_button.style.backgroundColor === available_colors[target_color_index]
+    ) {
       handle_color_match();
       if (current_level > max_level) handle_game_win();
     } else {
@@ -77,7 +79,10 @@ game_button.addEventListener("mousedown", function () {
 });
 
 function start_game() {
-  color_change_interval = setInterval(cycle_color, level_speeds[current_level - 1]);
+  color_change_interval = setInterval(
+    cycle_color,
+    level_speeds[current_level - 1]
+  );
   is_game_running = true;
   level_display.classList.remove("toggle_display");
   lives_container.classList.remove("toggle_display");
