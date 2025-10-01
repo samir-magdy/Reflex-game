@@ -40,7 +40,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   color: #ffffff;
   text-align: center;
   overflow-x: hidden;
@@ -133,16 +133,27 @@ body::after {
 }
 
 main {
-  margin-bottom: 1.5rem;
   max-width: 800px;
   padding: 0 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 4rem;
+}
+#para {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: #f0f0f0;
+  font-weight: 900;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 #leveltitle {
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 1.1rem;
@@ -164,8 +175,7 @@ main {
 }
 
 #lives {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0.5rem 1rem;
@@ -174,7 +184,7 @@ main {
   backdrop-filter: blur(8px);
   display: inline-block;
   width: auto;
-  margin-bottom: 18px;
+  margin-bottom: 1.1rem;
 }
 
 #lives span {
@@ -192,29 +202,16 @@ main {
   }
 }
 
-#para {
-  font-size: 1.5rem;
-  line-height: 1.6;
-  color: #f0f0f0;
-  font-weight: 500;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
 #target {
   display: block;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 3.25rem;
+  font-size: 2rem;
   padding: 0.2rem 0.5rem;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  text-shadow: 0 0 15px currentColor;
   width: fit-content;
   margin: 0 auto;
   margin-top: 0.5rem;
@@ -223,23 +220,17 @@ main {
 #toggle {
   width: clamp(340px, 90vw, 550px);
   height: clamp(240px, 50vw, 400px);
-  border: none;
   border-radius: 20px;
+  border: none;
   font-family: "Orbitron", monospace;
   font-size: clamp(1.75rem, 5vw, 3.5rem);
   font-weight: 900;
   color: rgb(0, 0, 0);
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 0.6rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.25),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
 #toggle:hover {
@@ -266,6 +257,7 @@ main {
   }
 
   main {
+    margin-top: 0;
     padding: 0 1rem;
   }
 
@@ -274,27 +266,29 @@ main {
   }
   #lives {
     font-size: 1.75rem;
+    margin-left: 1rem;
   }
 
   #para {
-    font-size: 1.5rem;
     margin-bottom: 0.6em;
   }
 }
 
 @media (max-width: 480px) {
+  main {
+    margin-top: 0;
+  }
   #leveltitle {
     font-size: 1.4rem;
     padding: 0.4rem 0.8rem;
-    margin-bottom: 8px;
     width: auto;
   }
 
   #lives {
     font-size: 1.4rem;
-    margin-bottom: 8px;
     padding: 0.4rem 0.8rem;
     width: auto;
+    margin-left: 0;
   }
 
   #para {
@@ -306,25 +300,10 @@ main {
 @media (max-width: 400px) {
   main {
     padding: 0 0.75rem;
+    margin-top: 0;
   }
-
-  #leveltitle {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-    margin-bottom: 8px;
-    width: auto;
-  }
-
-  #lives {
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-    padding: 0.4rem 0.8rem;
-    width: auto;
-  }
-
   #para {
-    font-size: 0.8rem;
-    margin-bottom: 0.8rem;
+    font-size: 0.75rem;
   }
 
   #toggle {
@@ -332,6 +311,9 @@ main {
     max-width: 340px;
     height: 240px;
     font-size: 1.75rem;
+  }
+  #lives {
+    margin-left: 0;
   }
 }
 
