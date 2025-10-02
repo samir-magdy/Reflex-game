@@ -16,7 +16,7 @@ const available_colors = [
   "rgb(248, 245, 34)", // yellow
   "rgb(128, 0, 128)", // purple
 ];
-const color_names = ["red", "blue", "orange", "green", "yellow", "purple"];
+const color_names = ["RED", "BLUE", "ORANGE", "GREEN", "YELLOW", "PURPLE"];
 const level_speeds = [750, 600, 450, 350, 275];
 const max_level = 5;
 
@@ -33,7 +33,7 @@ let active_message = null;
 target_color_display.style.backgroundColor =
   available_colors[target_color_index];
 target_color_display.textContent = color_names[target_color_index];
-game_button.style.backgroundColor = "#FFFFFF";
+game_button.style.backgroundColor = "#867777ff";
 lives_container.style.visibility = "hidden";
 
 // CREATE AUDIO
@@ -181,7 +181,7 @@ function handle_game_win() {
   // Display win message
   const win_message = document.createElement("div");
   win_message.className = "game-message";
-  win_message.textContent = "You Win";
+  win_message.textContent = "YOU WIN";
   win_message.style.color = "#4ecdc4";
   document.body.appendChild(win_message);
   active_message = win_message;
@@ -199,7 +199,7 @@ function handle_game_over() {
   // Display game over message
   const game_over_message = document.createElement("div");
   game_over_message.className = "game-message";
-  game_over_message.textContent = "Game Over";
+  game_over_message.textContent = "GAME OVER";
   game_over_message.style.color = "#ff4757";
   document.body.appendChild(game_over_message);
   active_message = game_over_message;
