@@ -353,7 +353,6 @@ main {
     width: 90vw;
     max-width: 340px;
     height: 240px;
-    margin: 0;
   }
   #lives img {
     width: 1.75rem;
@@ -388,7 +387,6 @@ main {
     width: 90vw;
     max-width: 340px;
     height: 240px;
-    margin: 0;
   }
   #lives img {
     width: 1.75rem;
