@@ -335,7 +335,7 @@ main {
     margin-left: 1rem;
   }
   .game-message {
-    width: 80%;
+    width: 87%;
     font-size: 3rem !important;
     margin-top: 1rem;
   }
@@ -368,7 +368,6 @@ main {
   .game-message {
     font-size: 3.5rem !important;
     margin-top: 2rem;
-    max-width: 50vw !important;
   }
   body {
     min-height: 80vh;
@@ -377,7 +376,7 @@ main {
 
 @media (max-width: 400px) {
   main {
-    padding: 0 0.75rem;
+    padding: 0 1rem;
     margin-top: 0;
   }
   #target {
@@ -389,14 +388,14 @@ main {
     height: 240px;
   }
   #lives img {
-    width: 1.75rem;
+    width: 2rem;
     padding-top: 0.2rem;
     margin: 0 !important;
   }
 
   #leveltitle {
-    padding-top: 0.3rem;
-    font-size: 1.75rem;
+    padding-top: 0.6rem;
+    font-size: 1.4rem;
     margin-bottom: 0.5rem;
   }
   #para {
