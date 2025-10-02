@@ -33,7 +33,7 @@ let active_message = null;
 target_color_display.style.backgroundColor =
   available_colors[target_color_index];
 target_color_display.textContent = color_names[target_color_index];
-game_button.style.backgroundColor = "#867777ff";
+game_button.style.backgroundColor = "#1a1616ff";
 lives_container.style.visibility = "hidden";
 
 // CREATE AUDIO

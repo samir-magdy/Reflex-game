@@ -1,18 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
 
 :root {
-  --color-text-muted: rgb(190, 181, 181);
-  --color-shadow-dark: rgb(24, 23, 23);
-  --color-accent: #4ecdc4;
-  --color-accent-glow: rgba(78, 205, 196, 0.5);
-  --glass-minimal: rgba(255, 255, 255, 0.02);
+  --color-accent: #33ebee;
+  --color-accent-glow: rgba(51, 235, 238, 0.5);
   --glass-subtle: rgba(255, 255, 255, 0.08);
   --glass-light: rgba(255, 255, 255, 0.1);
-  --glass-bright: rgba(255, 255, 255, 0.15);
   --glass-border-light: rgba(255, 255, 255, 0.2);
   --glass-medium: rgba(255, 255, 255, 0.3);
   --glass-border-strong: rgba(255, 255, 255, 0.5);
   --overlay-dark: rgba(0, 0, 0, 0.9);
+  --main-fonts: #eef3f7;
 }
 
 * {
@@ -26,20 +23,24 @@
 }
 
 /* Common styles - consolidated */
-#para,
+#para {
+  text-shadow: 0 0 5px currentColor;
+}
+
 #leveltitle {
-  color: var(--color-text-muted);
-  text-shadow: 4px 0 8px var(--color-shadow-dark);
+  text-shadow: 0 0 5px currentColor;
 }
 
 #para,
 #leveltitle,
 #target,
 #toggle,
-.game-message {
+.game-message,
+#button_text {
   font-weight: 900;
+  opacity: 0.75;
+  color: var(--main-fonts);
 }
-
 body {
   font-family: "Orbitron", monospace;
   background: radial-gradient(
@@ -153,11 +154,11 @@ main {
 #lives img {
   width: 3rem;
   margin-left: 1rem;
+  filter: drop-shadow(0px 0 5px #d49191) drop-shadow(0 -5px 10px #ff0000);
 }
 
 #target {
   display: block;
-  color: rgb(0, 0, 0);
   font-size: 3rem;
   letter-spacing: 0.25rem;
   padding: 0.5rem 1rem;
@@ -167,6 +168,10 @@ main {
   margin: 0 auto;
   margin-bottom: 1rem;
   text-shadow: none;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  color: rgb(255, 255, 255);
+  opacity: 0.85;
 }
 
 #toggle {
@@ -176,11 +181,11 @@ main {
   border: 5px solid rgba(0, 0, 0, 0.3);
   font-family: "Orbitron", monospace;
   font-size: clamp(2.5rem, 8vw, 5rem);
-  color: rgb(0, 0, 0);
   cursor: cell;
   letter-spacing: 2px;
   margin-top: 1rem;
   transition: all 0.1s ease;
+  padding: 1rem;
 }
 
 #toggle:hover {
@@ -191,6 +196,11 @@ main {
   transform: translateY(6px);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2),
     inset 0 -2px 4px rgba(0, 0, 0, 0.1), inset 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#button_text {
+  text-shadow: 0 4px 7px rgba(110, 192, 165, 0.514);
+  letter-spacing: 0.5rem;
 }
 
 /* Volume Slider Container */
@@ -210,6 +220,7 @@ main {
   border: 1px solid var(--glass-border-light);
   width: 50px;
   z-index: 10;
+  opacity: 0.75;
 }
 
 #volume_slider {
@@ -279,7 +290,6 @@ main {
   padding: 1rem 0.5rem;
   border-radius: 20px;
   background: var(--overlay-dark);
-  opacity: 0.9;
   backdrop-filter: blur(15px);
   border: 3px solid var(--glass-border-strong);
   z-index: 1000;
@@ -377,7 +387,7 @@ main {
 @media (max-width: 400px) {
   main {
     padding: 0 1rem;
-    margin-top: 0;
+    margin-top: 0 !important;
   }
   #target {
     font-size: 1.75rem;
