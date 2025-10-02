@@ -40,7 +40,7 @@
   font-weight: 900;
   opacity: 0.75;
   color: var(--main-fonts);
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.1rem;
 }
 body {
   font-family: "Orbitron", monospace;
