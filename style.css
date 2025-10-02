@@ -40,6 +40,7 @@
   font-weight: 900;
   opacity: 0.75;
   color: var(--main-fonts);
+  letter-spacing: 0.5rem;
 }
 body {
   font-family: "Orbitron", monospace;
@@ -160,7 +161,6 @@ main {
 #target {
   display: block;
   font-size: 3rem;
-  letter-spacing: 0.25rem;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   border: 3px solid var(--glass-medium);
@@ -182,7 +182,6 @@ main {
   font-family: "Orbitron", monospace;
   font-size: clamp(2.5rem, 8vw, 5rem);
   cursor: cell;
-  letter-spacing: 2px;
   margin-top: 1rem;
   transition: all 0.1s ease;
   padding: 1rem;
@@ -200,7 +199,6 @@ main {
 
 #button_text {
   text-shadow: 0 4px 7px rgba(110, 192, 165, 0.514);
-  letter-spacing: 0.5rem;
 }
 
 /* Volume Slider Container */
@@ -286,7 +284,6 @@ main {
   min-width: 50vw;
   transform: translate(-50%, -50%);
   font-size: clamp(5rem, 8vw, 6rem);
-  letter-spacing: 0.5rem;
   padding: 1rem 0.5rem;
   border-radius: 20px;
   background: var(--overlay-dark);
