@@ -40,7 +40,7 @@
   font-weight: 900;
   opacity: 0.75;
   color: var(--main-fonts);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 }
 body {
   font-family: "Orbitron", monospace;
@@ -144,6 +144,7 @@ main {
   font-size: 2.7rem;
   margin-right: 0.2rem;
   padding-top: 0.2rem;
+  letter-spacing: 1px;
 }
 
 #lives span {
