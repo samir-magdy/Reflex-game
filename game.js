@@ -17,7 +17,7 @@ const available_colors = [
   "rgb(128, 0, 128)", // purple
 ];
 const color_names = ["red", "blue", "brown", "green", "orange", "purple"];
-const level_speeds = [750, 600, 500, 400, 280];
+const level_speeds = [750, 600, 450, 350, 275];
 const max_level = 5;
 
 // GAME STATE
@@ -33,7 +33,7 @@ let active_message = null;
 target_color_display.style.backgroundColor =
   available_colors[target_color_index];
 target_color_display.textContent = color_names[target_color_index];
-game_button.style.backgroundColor = "#C9E4FF";
+game_button.style.backgroundColor = "#FFFFFF";
 lives_container.style.visibility = "hidden";
 
 // CREATE AUDIO
@@ -54,18 +54,37 @@ const audio_elements = [
 
 // VOLUME CONTROLS
 const volume_slider = document.getElementById("volume_slider");
+const volume_display = document.getElementById("volume_display");
+const volume_mute = document.getElementById("mute_volume");
 
 function update_volume() {
   const volume = volume_slider.value / 100;
   audio_elements.forEach((audio) => (audio.volume = volume));
+  if (volume_slider.value == 0) {
+    volume_display.setAttribute("src", "images/vol_icon_muted.png");
+  } else {
+    volume_display.setAttribute("src", "images/vol_icon.png");
+  }
 }
 
 volume_slider.addEventListener("input", update_volume);
 update_volume();
 
-// CYCLE COLOR FUNCTION
+volume_mute.addEventListener("click", function () {
+  if (volume_slider.value > 0) {
+    volume_slider.value = 0;
+  } else {
+    volume_slider.value = 50;
+  }
+  update_volume();
+});
+
+// CYCLE COLOR FUNCTION - using CSS classes instead of inline styles
 function cycle_color() {
-  game_button.style.backgroundColor = available_colors[current_color_index];
+  // Remove all color classes
+  game_button.className = "";
+  // Add the current color class
+  game_button.classList.add("game-color-" + current_color_index);
   current_color_index = (current_color_index + 1) % available_colors.length;
 }
 
@@ -74,12 +93,11 @@ game_button.addEventListener("mousedown", function () {
   if (!is_game_running) {
     start_game();
   } else {
-    stop_game(game_button.style.backgroundColor);
-    console.log(game_button.style.backgroundColor);
-    console.log(available_colors[target_color_index]);
-    if (
-      game_button.style.backgroundColor === available_colors[target_color_index]
-    ) {
+    const stopped_color_index = stop_game();
+    console.log("Stopped on color index:", stopped_color_index);
+    console.log("Target color index:", target_color_index);
+
+    if (stopped_color_index === target_color_index) {
       handle_color_match();
       if (current_level > max_level) handle_game_win();
     } else {
@@ -117,10 +135,24 @@ function stop_game() {
   clearInterval(color_change_interval);
   is_game_running = false;
   button_text.textContent = "START";
+
+  // Find which color class is currently applied
+  let stopped_color_index = -1;
+  for (let i = 0; i < available_colors.length; i++) {
+    if (game_button.classList.contains("game-color-" + i)) {
+      stopped_color_index = i;
+      break;
+    }
+  }
+
+  // Set inline style to freeze the color
+  game_button.style.backgroundColor =
+    window.getComputedStyle(game_button).backgroundColor;
+
+  return stopped_color_index;
 }
 
 function handle_color_match() {
-  stop_game();
   round_win_sound.play();
   current_level++;
   target_color_index = Math.floor(Math.random() * available_colors.length);
