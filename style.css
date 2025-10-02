@@ -22,15 +22,6 @@
   visibility: hidden !important;
 }
 
-/* Common styles - consolidated */
-#para {
-  text-shadow: 0 0 5px currentColor;
-}
-
-#leveltitle {
-  text-shadow: 0 0 5px currentColor;
-}
-
 #para,
 #leveltitle,
 #target,
@@ -138,13 +129,15 @@ main {
   max-width: 550px;
   margin: 0 auto;
   width: 100%;
+  text-shadow: 0 0 5px currentColor;
 }
 
 #leveltitle {
   font-size: 2.7rem;
   margin-right: 0.2rem;
   padding-top: 0.2rem;
-  letter-spacing: 1px;
+  letter-spacing: normal;
+  text-shadow: 0 0 5px currentColor;
 }
 
 #lives span {
