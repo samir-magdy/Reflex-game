@@ -1,5 +1,6 @@
 // SELECT GAME ELEMENTS
 const game_button = document.getElementById("toggle");
+const button_text = document.getElementById("button_text");
 const instruction_text = document.getElementById("para");
 const level_display = document.getElementById("leveltitle");
 const lives_container = document.getElementById("lives");
@@ -7,8 +8,16 @@ const heart_icons = lives_container.querySelectorAll("span");
 const target_color_display = document.getElementById("target");
 
 // GAME CONSTANTS
-const available_colors = ["red", "blue", "yellow", "green", "orange", "purple"];
-const level_speeds = [750, 600, 450, 300, 200];
+const available_colors = [
+  "rgb(255, 0, 0)", // red
+  "rgb(0, 0, 255)", // blue
+  "rgb(160, 100, 45)", // brown (sienna)
+  "rgb(0, 128, 0)", // green
+  "rgb(255, 165, 0)", // orange
+  "rgb(128, 0, 128)", // purple
+];
+const color_names = ["red", "blue", "brown", "green", "orange", "purple"];
+const level_speeds = [750, 600, 500, 400, 280];
 const max_level = 5;
 
 // GAME STATE
@@ -18,10 +27,12 @@ let color_change_interval = null;
 let current_level = 1;
 let remaining_lives = 3;
 let target_color_index = Math.floor(Math.random() * available_colors.length);
+let active_message = null;
 
 // SET INITIAL GAME ELEMENT STATES
-target_color_display.style.color = available_colors[target_color_index];
-target_color_display.textContent = available_colors[target_color_index];
+target_color_display.style.backgroundColor =
+  available_colors[target_color_index];
+target_color_display.textContent = color_names[target_color_index];
 game_button.style.backgroundColor = "#C9E4FF";
 lives_container.style.visibility = "hidden";
 
@@ -43,12 +54,10 @@ const audio_elements = [
 
 // VOLUME CONTROLS
 const volume_slider = document.getElementById("volume_slider");
-const volume_display = document.getElementById("volume_display");
 
 function update_volume() {
   const volume = volume_slider.value / 100;
   audio_elements.forEach((audio) => (audio.volume = volume));
-  volume_display.textContent = volume_slider.value + "%";
 }
 
 volume_slider.addEventListener("input", update_volume);
@@ -65,7 +74,9 @@ game_button.addEventListener("mousedown", function () {
   if (!is_game_running) {
     start_game();
   } else {
-    stop_game();
+    stop_game(game_button.style.backgroundColor);
+    console.log(game_button.style.backgroundColor);
+    console.log(available_colors[target_color_index]);
     if (
       game_button.style.backgroundColor === available_colors[target_color_index]
     ) {
@@ -79,6 +90,12 @@ game_button.addEventListener("mousedown", function () {
 });
 
 function start_game() {
+  // Remove any active game message
+  if (active_message) {
+    active_message.remove();
+    active_message = null;
+  }
+
   color_change_interval = setInterval(
     cycle_color,
     level_speeds[current_level - 1]
@@ -88,8 +105,8 @@ function start_game() {
   lives_container.classList.remove("toggle_display");
   instruction_text.classList.remove("toggle_display");
   background_music.play();
-  game_button.textContent = "STOP";
-  level_display.textContent = `LEVEL ${current_level}`;
+  button_text.textContent = "STOP";
+  level_display.textContent = `ROUND ${current_level}`;
   lives_container.style.visibility = "visible";
   for (let i = 0; i < remaining_lives; i++) {
     heart_icons[i].style.visibility = "visible";
@@ -99,7 +116,7 @@ function start_game() {
 function stop_game() {
   clearInterval(color_change_interval);
   is_game_running = false;
-  game_button.textContent = "START";
+  button_text.textContent = "START";
 }
 
 function handle_color_match() {
@@ -107,8 +124,9 @@ function handle_color_match() {
   round_win_sound.play();
   current_level++;
   target_color_index = Math.floor(Math.random() * available_colors.length);
-  target_color_display.style.color = available_colors[target_color_index];
-  target_color_display.textContent = available_colors[target_color_index];
+  target_color_display.style.backgroundColor =
+    available_colors[target_color_index];
+  target_color_display.textContent = color_names[target_color_index];
 }
 
 function handle_color_mismatch() {
@@ -122,20 +140,38 @@ function handle_game_win() {
   lives_container.classList.add("toggle_display");
   instruction_text.classList.add("toggle_display");
   background_music.pause();
-  game_button.textContent = "RESTART";
+  button_text.textContent = "RESTART";
   setTimeout(() => victory_sound.play(), 100);
   for (let i = 0; i < remaining_lives; i++) {
     heart_icons[i].style.visibility = "hidden";
   }
+
+  // Display win message
+  const win_message = document.createElement("div");
+  win_message.className = "game-message";
+  win_message.textContent = "You Win";
+  win_message.style.color = "#4ecdc4";
+  document.body.appendChild(win_message);
+  active_message = win_message;
+
   reset_game_state();
 }
 
 function handle_game_over() {
   instruction_text.classList.add("toggle_display");
-  game_button.textContent = "RESTART";
+  button_text.textContent = "RESTART";
   level_display.classList.add("toggle_display");
   background_music.pause();
   game_over_sound.play();
+
+  // Display game over message
+  const game_over_message = document.createElement("div");
+  game_over_message.className = "game-message";
+  game_over_message.textContent = "Game Over";
+  game_over_message.style.color = "#ff4757";
+  document.body.appendChild(game_over_message);
+  active_message = game_over_message;
+
   reset_game_state();
   lives_container.style.visibility = "hidden";
 }

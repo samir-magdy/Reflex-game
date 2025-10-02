@@ -9,7 +9,7 @@
     />
     <meta name="author" content="Samir Magdy" />
     <meta name="theme-color" content="#0a0a0a" />
-    <link rel="icon" type="image/x-icon" href="favi_icon.png" />
+    <link rel="icon" type="image/x-icon" href="images/favi_icon.png" />
     <title>Reflex Test</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -20,12 +20,22 @@
         on: <span id="target"></span>
       </p>
       <div id="leveltitle"></div>
-      <div id="lives"><span>❤️</span> <span>❤️</span> <span>❤️</span></div>
-      <button id="toggle">START</button>
+      <div id="lives">
+        <span><img src="images/heart.png" /></span>
+        <span><img src="images/heart.png" /></span>
+        <span><img src="images/heart.png" /></span>
+      </div>
+      <button id="toggle"><span id="button_text">START</span></button>
       <div id="volume_slider_container">
-        <label for="volume_slider">Volume:</label>
-        <input type="range" id="volume_slider" min="0" max="100" value="50" />
-        <span id="volume_display">50</span>
+        <input
+          type="range"
+          id="volume_slider"
+          min="0"
+          max="100"
+          value="50"
+          orient="vertical"
+        />
+        <span><img id="volume_display" src="images/vol_icon.png" /></span>
       </div>
     </main>
     <script src="game.js"></script>
