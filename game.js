@@ -11,12 +11,12 @@ const target_color_display = document.getElementById("target");
 const available_colors = [
   "rgb(255, 0, 0)", // red
   "rgb(0, 0, 255)", // blue
-  "rgb(160, 100, 45)", // brown (sienna)
+  "rgb(224, 101, 1)", // orange
   "rgb(0, 128, 0)", // green
-  "rgb(255, 165, 0)", // orange
+  "rgb(248, 245, 34)", // yellow
   "rgb(128, 0, 128)", // purple
 ];
-const color_names = ["red", "blue", "brown", "green", "orange", "purple"];
+const color_names = ["red", "blue", "orange", "green", "yellow", "purple"];
 const level_speeds = [750, 600, 450, 350, 275];
 const max_level = 5;
 
@@ -172,7 +172,7 @@ function handle_game_win() {
   lives_container.classList.add("toggle_display");
   instruction_text.classList.add("toggle_display");
   background_music.pause();
-  button_text.textContent = "RESTART";
+  button_text.textContent = "CLICK TO PLAY AGAIN";
   setTimeout(() => victory_sound.play(), 100);
   for (let i = 0; i < remaining_lives; i++) {
     heart_icons[i].style.visibility = "hidden";
@@ -191,7 +191,7 @@ function handle_game_win() {
 
 function handle_game_over() {
   instruction_text.classList.add("toggle_display");
-  button_text.textContent = "RESTART";
+  button_text.textContent = "CLICK TO TRY AGAIN";
   level_display.classList.add("toggle_display");
   background_music.pause();
   game_over_sound.play();
